@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circles</title>
+    <title>Shapes</title>
     <style type="text/css">
         body {
             margin: 0px;
             background: rgb(165, 196, 243);
         }
+
         #settings {
-            /*background: red;*/
-            background-color:rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             position: absolute;
             right: 0;
             border-radius: 25px;
@@ -19,10 +19,16 @@
             margin: 11px;
             color: white;
         }
+
+        #code {
+            overflow: scroll;
+            max-width: 400px;
+        }
     </style>
+
+    <script src="bundle.js"></script>
 </head>
 <body>
-<!--<input type="text">-->
 <div id="settings">
     <p>
         MODEL_NUMBERS: <input type="number" id="numberOfModels" value="24">
@@ -39,7 +45,7 @@
         Circle: <input class="messageCheckbox" type="checkbox" id="Circle" checked>
         Rect: <input class="messageCheckbox" type="checkbox" id="Rect" checked>
     </div>
-    <p>COLORS: ['blue', 'red', 'green', 'black', 'yellow']</p>
+    <p>COLORS: ['blue', 'red', 'green', 'yellow'] </p>
     <p>
         MIN_SPEED: <input type="number" id="MIN_SPEED" value="3">
     </p>
@@ -58,15 +64,20 @@
 
 
     <button id="generate">Generate</button>
+    example
+    <div id="code">
+        &lt;script&gt; createShapeCanvas("myCanvas",<span id="conf"></span>) &lt;/script&gt;
+    </div>
+
 </div>
 
 <canvas id="myCanvas"></canvas>
-<script src="bundle.js"></script>
 <script>
     const generateBtn = document.getElementById("generate")
     const numberOfModelsInput = document.getElementById("numberOfModels")
     var startPositionSelect = document.getElementById("startPos");
-    var codeDiv = document.getElementById("code");
+    var codeDiv = document.getElementById("example-code");
+    var confElement = document.getElementById("conf");
 
     const enabledModelCheckbox = {
         Triangle: document.getElementById('Triangle'),
@@ -81,15 +92,17 @@
             MODEL_NUMBERS: Number.parseInt(numberOfModelsInput.value),
             START_POSITION: startPositionValue,
             ENABLED_MODELS: getEnabledModels(),
-            MAX_SPEED: document.getElementById('MAX_SPEED').value,
-            MIN_SPEED: document.getElementById('MIN_SPEED').value,
-            LINE_WIDTH: document.getElementById('LINE_WIDTH').value,
-            SIZE_MULTIPLAYER: document.getElementById('SIZE_MULTIPLAYER').value,
+            MAX_SPEED: Number.parseInt(document.getElementById('MAX_SPEED').value),
+            MIN_SPEED: Number.parseInt(document.getElementById('MIN_SPEED').value),
+            LINE_WIDTH: Number.parseInt(document.getElementById('LINE_WIDTH').value),
+            SIZE_MULTIPLAYER: Number.parseInt(document.getElementById('SIZE_MULTIPLAYER').value),
             BACKGROUND_COLOR: document.getElementById('BACKGROUND_COLOR').value,
         }
 
         console.log(config)
         createShapeCanvas("myCanvas", config)
+        confElement.innerText = JSON.stringify(config, null, 2)
+
     }
 
     function getEnabledModels() {
