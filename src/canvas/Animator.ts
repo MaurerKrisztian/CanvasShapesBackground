@@ -2,11 +2,10 @@ import { EntityRepository } from "../EntityRepository";
 import { Context } from "./Context";
 
 export class Animator {
-    constructor() {
-    }
+    static requestFrameId: any
 
     static animate() {
-        requestAnimationFrame(Animator.animate); //infinite loop
+        Animator.requestFrameId = requestAnimationFrame(Animator.animate); //infinite loop
 
         Context.ctx.clearRect(0, 0, innerWidth, innerHeight);
 
@@ -15,5 +14,11 @@ export class Animator {
         }
 
 
+    }
+
+    static cancelAnimation() {
+        if (Animator.requestFrameId){
+            cancelAnimationFrame(Animator.requestFrameId);
+        }
     }
 }

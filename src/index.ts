@@ -7,13 +7,19 @@ import {Setup, IConfig} from "./setup";
 function createShapeCanvas(htmlCanvasId: string = "myCanvas", config: Partial<IConfig> = Setup.CONFIG){
     Setup.CONFIG = Object.assign(Setup.CONFIG, config);
 
-    EntityRepository.allModels = []
+    clearPrevious()
+
     Context.getContext(htmlCanvasId)
     for (let i = 0; i < config.MODEL_NUMBERS; i++) {
         EntityRepository.allModels[i] = ModelFactory.create("random");
     }
 
     Animator.animate()
+}
+
+function clearPrevious(){
+    Animator.cancelAnimation()
+    EntityRepository.allModels = []
 }
 
 (window as any).createShapeCanvas = createShapeCanvas
