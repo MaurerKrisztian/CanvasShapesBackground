@@ -1,4 +1,4 @@
-import { EntityRepository } from "./EntityRepository";
+import { EntityRepository } from "../EntityRepository";
 import { Context } from "./Context";
 
 export class Animator {
@@ -10,8 +10,8 @@ export class Animator {
 
         Context.ctx.clearRect(0, 0, innerWidth, innerHeight);
 
-        for (var i = 0; i < EntityRepository.allCircuit.length; i++) {
-            EntityRepository.allCircuit[i].update(Context.ctx);
+        for (var i = 0; i < EntityRepository.allModels.length; i++) {
+            EntityRepository.allModels[i].update(Context.ctx);
         }
 
 

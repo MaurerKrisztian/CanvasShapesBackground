@@ -1,18 +1,24 @@
+import {IModel} from "./interfaces/IModel";
+import {DEFAULT_LINE_WIDTH, Setup} from "../setup";
+import {Utils} from "../Utils";
 
 
-export class Circle {
+export class CircleModel implements IModel {
+    static MODEL_NAME = 'Circle'
+
     color: string;
-    colors = ['blue', 'red', 'green', 'black'];
 
-    constructor(private x: any, private y: any, private dx: any, private dy: any, private radius: any) {
-        this.color = this.colors[Math.round(Math.random() * this.colors.length)];
+    constructor(private x: any, private y: any, private dx: any, private dy: any, private radius: any, private lineWidth: number = Setup.CONFIG.LINE_WIDTH) {
+        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.COLORS)
     }
 
     draw(context: any) {
+        context.lineWidth = this.lineWidth;
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         context.strokeStyle = this.color;
         context.stroke();
+        context.lineWidth = DEFAULT_LINE_WIDTH;
     }
 
 
