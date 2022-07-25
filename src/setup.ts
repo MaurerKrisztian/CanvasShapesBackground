@@ -1,8 +1,6 @@
 export const DEFAULT_LINE_WIDTH = 2
 
 export class Setup {
-
-
    static CONFIG: IConfig = {
         MODEL_NUMBERS: 11,
         COLORS: ['blue', 'red', 'green', 'black', 'yellow'],

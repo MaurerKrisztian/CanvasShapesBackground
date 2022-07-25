@@ -5,19 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circles</title>
     <style type="text/css">
-        body{
+        body {
             margin: 0px;
             background: rgb(165, 196, 243);
         }
-        index{
-            /* border: 1px solid black; */
+        #settings {
+            /*background: red;*/
+            background-color:rgba(0, 0, 0, 0.5);
+            position: absolute;
+            right: 0;
+            border-radius: 25px;
+            padding: 11px;
+            margin: 11px;
+            color: white;
         }
     </style>
-    
-
 </head>
 <body>
-    <canvas id="myCanvas"></canvas>
-    <script src="bundle.js"></script>
+<!--<input type="text">-->
+<div id="settings">
+    <p>
+        MODEL_NUMBERS: <input type="number" id="numberOfModels" value="24">
+    </p>
+    <p>
+        START_POSITION: <select name="cars" id="startPos">
+        <option value="random">random</option>
+        <option value="middle">middle</option>
+    </p>
+    </select>
+    <div>
+        <p> ENABLED_MODELS:</p>
+        Triangle: <input class="messageCheckbox" type="checkbox" id="Triangle" checked>
+        Circle: <input class="messageCheckbox" type="checkbox" id="Circle" checked>
+        Rect: <input class="messageCheckbox" type="checkbox" id="Rect" checked>
+    </div>
+    <p>COLORS: ['blue', 'red', 'green', 'black', 'yellow']</p>
+    <p>
+        MIN_SPEED: <input type="number" id="MIN_SPEED" value="3">
+    </p>
+    <p>
+        MAX_SPEED: <input type="number" id="MAX_SPEED" value="6">
+    </p>
+    <p>
+        LINE_WIDTH: <input type="number" id="LINE_WIDTH" value="2">
+    </p>
+    <p>
+        SIZE_MULTIPLAYER: <input type="number" id="SIZE_MULTIPLAYER" value="1">
+    </p>
+    <p>
+        BACKGROUND_COLOR: <input type="text" id="BACKGROUND_COLOR" value="black"> <br>- can be none
+    </p>
+
+
+    <button id="generate">Generate</button>
+</div>
+
+<canvas id="myCanvas"></canvas>
+<script src="bundle.js"></script>
+<script>
+    const generateBtn = document.getElementById("generate")
+    const numberOfModelsInput = document.getElementById("numberOfModels")
+    var startPositionSelect = document.getElementById("startPos");
+    var codeDiv = document.getElementById("code");
+
+    const enabledModelCheckbox = {
+        Triangle: document.getElementById('Triangle'),
+        Circle: document.getElementById('Circle'),
+        Rect: document.getElementById('Rect')
+    }
+
+    generateBtn.onclick = () => {
+        var value = startPositionSelect.value;
+        var startPositionValue = startPositionSelect.options[startPositionSelect.selectedIndex].text;
+        const config = {
+            MODEL_NUMBERS: Number.parseInt(numberOfModelsInput.value),
+            START_POSITION: startPositionValue,
+            ENABLED_MODELS: getEnabledModels(),
+            MAX_SPEED: document.getElementById('MAX_SPEED').value,
+            MIN_SPEED: document.getElementById('MIN_SPEED').value,
+            LINE_WIDTH: document.getElementById('LINE_WIDTH').value,
+            SIZE_MULTIPLAYER: document.getElementById('SIZE_MULTIPLAYER').value,
+            BACKGROUND_COLOR: document.getElementById('BACKGROUND_COLOR').value,
+        }
+
+        console.log(config)
+        createShapeCanvas("myCanvas", config)
+    }
+
+    function getEnabledModels() {
+        const models = []
+        enabledModelCheckbox.Circle.checked ? models.push('Circle') : ""
+        enabledModelCheckbox.Triangle.checked ? models.push('Triangle') : ""
+        enabledModelCheckbox.Rect.checked ? models.push('Rect') : ""
+        return models
+    }
+</script>
 </body>
 </html>
