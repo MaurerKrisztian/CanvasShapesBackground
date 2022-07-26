@@ -1,3 +1,5 @@
+import {Context} from "./canvas/Context";
+
 export class Utils {
     static generateRandom(min: number, max: number) {
         let difference = max - min;
@@ -7,11 +9,11 @@ export class Utils {
         return rand;
     }
 
-    static pickRandomFromArray<T = any>(arr: T[]): T{
+    static pickRandomFromArray<T = any>(arr: T[]): T {
         return arr[this.generateRandom(0, arr.length)]
     }
 
-    static middlePosition(){
-        return {x: innerWidth / 2, y: innerHeight / 2}
+    static middlePosition() {
+        return {x: Context.canvasWidth / 2, y: Context.canvasHeight / 2}
     }
 }

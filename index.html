@@ -23,7 +23,13 @@
         #code {
             overflow: scroll;
             max-width: 400px;
+            max-height: 55px;
         }
+
+        /*canvas {*/
+        /*    width: 50%;*/
+        /*    height: 50%;*/
+        /*}*/
     </style>
 
     <script src="bundle.js"></script>
@@ -62,16 +68,16 @@
         BACKGROUND_COLOR: <input type="text" id="BACKGROUND_COLOR" value="black"> <br>- can be none
     </p>
 
+    <p> IS_FULL_SCREEN: <input class="messageCheckbox" type="checkbox" id="IS_FULL_SCREEN" checked></p>
 
     <button id="generate">Generate</button>
-    example
     <div id="code">
         &lt;script&gt; createShapeCanvas("myCanvas",<span id="conf"></span>) &lt;/script&gt;
     </div>
 
 </div>
 
-<canvas id="myCanvas"></canvas>
+<canvas id="myCanvas" width="400px" height="500px"></canvas>
 <script>
     const generateBtn = document.getElementById("generate")
     const numberOfModelsInput = document.getElementById("numberOfModels")
@@ -86,17 +92,17 @@
     }
 
     generateBtn.onclick = () => {
-        var value = startPositionSelect.value;
-        var startPositionValue = startPositionSelect.options[startPositionSelect.selectedIndex].text;
         const config = {
             MODEL_NUMBERS: Number.parseInt(numberOfModelsInput.value),
-            START_POSITION: startPositionValue,
+            START_POSITION: startPositionSelect.options[startPositionSelect.selectedIndex].text,
             ENABLED_MODELS: getEnabledModels(),
             MAX_SPEED: Number.parseInt(document.getElementById('MAX_SPEED').value),
             MIN_SPEED: Number.parseInt(document.getElementById('MIN_SPEED').value),
             LINE_WIDTH: Number.parseInt(document.getElementById('LINE_WIDTH').value),
             SIZE_MULTIPLAYER: Number.parseInt(document.getElementById('SIZE_MULTIPLAYER').value),
             BACKGROUND_COLOR: document.getElementById('BACKGROUND_COLOR').value,
+            COLORS: ['blue', 'red', 'green', 'yellow'],
+            IS_FULL_SCREEN: document.getElementById('IS_FULL_SCREEN').checked
         }
 
         console.log(config)

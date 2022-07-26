@@ -1,7 +1,8 @@
 export const DEFAULT_LINE_WIDTH = 2
 
 export class Setup {
-   static CONFIG: IConfig = {
+
+    static CONFIG: IConfig = {
         MODEL_NUMBERS: 11,
         COLORS: ['blue', 'red', 'green', 'yellow'],
         BACKGROUND_COLOR: 'none',
@@ -10,13 +11,14 @@ export class Setup {
         MAX_SPEED: 11,
         LINE_WIDTH: 3,
         SIZE_MULTIPLAYER: 2,
-        START_POSITION: 'random'
+        START_POSITION: 'random',
+        IS_FULL_SCREEN: true,
     }
 }
 
 export interface IConfig {
     START_POSITION: 'middle' | 'random'
-    ENABLED_MODELS: ('Triangle'| 'Circle'| 'Rect')[],
+    ENABLED_MODELS: ('Triangle' | 'Circle' | 'Rect')[],
     COLORS: string[]
     BACKGROUND_COLOR: 'none' | string,
     MIN_SPEED: number,
@@ -24,4 +26,5 @@ export interface IConfig {
     LINE_WIDTH: number,
     MODEL_NUMBERS: number,
     SIZE_MULTIPLAYER: number,
+    IS_FULL_SCREEN: boolean,
 }

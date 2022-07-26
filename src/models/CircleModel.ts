@@ -1,6 +1,7 @@
 import {IModel} from "./interfaces/IModel";
 import {DEFAULT_LINE_WIDTH, Setup} from "../setup";
 import {Utils} from "../Utils";
+import {Context} from "../canvas/Context";
 
 
 export class CircleModel implements IModel {
@@ -23,10 +24,10 @@ export class CircleModel implements IModel {
 
 
     update(context: any) {
-        if (this.x > innerWidth - this.radius || this.x < 0 + this.radius) {
+        if (this.x > Context.canvasWidth - this.radius || this.x < 0 + this.radius) {
             this.dx = -this.dx;
         }
-        if (this.y > innerHeight - this.radius || this.y < 0 + this.radius) {
+        if (this.y > Context.canvasHeight - this.radius || this.y < 0 + this.radius) {
             this.dy = -this.dy;
         }
 

@@ -11,15 +11,15 @@ function createShapeCanvas(htmlCanvasId: string = "myCanvas", config: Partial<IC
 
     Context.getContext(htmlCanvasId)
     for (let i = 0; i < config.MODEL_NUMBERS; i++) {
-        EntityRepository.allModels[i] = ModelFactory.create("random");
+        EntityRepository.allModels.push(ModelFactory.create("random"));
     }
 
     Animator.animate()
 }
 
 function clearPrevious(){
-    Animator.cancelAnimation()
     EntityRepository.allModels = []
+    Animator.cancelAnimation()
 }
 
 (window as any).createShapeCanvas = createShapeCanvas

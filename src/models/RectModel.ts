@@ -1,6 +1,7 @@
 import {IModel} from "./interfaces/IModel";
 import {DEFAULT_LINE_WIDTH, Setup} from "../setup";
 import {Utils} from "../Utils";
+import {Context} from "../canvas/Context";
 
 export class RectModel implements IModel {
     static MODEL_NAME = 'Rect'
@@ -22,10 +23,10 @@ export class RectModel implements IModel {
 
 
     update(context: any) {
-        if (this.x > innerWidth - this.width || this.x < 0) {
+        if (this.x > Context.canvasWidth - this.width || this.x < 0) {
             this.dx = -this.dx;
         }
-        if (this.y > innerHeight - this.height || this.y < 0) {
+        if (this.y > Context.canvasHeight - this.height || this.y < 0) {
             this.dy = -this.dy;
         }
 
