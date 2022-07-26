@@ -26,10 +26,10 @@ export class TriangleModel implements IModel {
 
 
     update(context: any) {
-        if (this.x > Context.canvasWidth - this.sideLength || this.x < 0) {
+        if (this.x > Context.canvasWidth - this.sideLength * 2 || this.x < 0) {
             this.dx = -this.dx;
         }
-        if (this.y > Context.canvasHeight - this.sideLength || this.y < 0) {
+        if (this.y > Context.canvasHeight - this.sideLength / 2 || this.y < this.sideLength) {
             this.dy = -this.dy;
         }
 
