@@ -9,8 +9,8 @@ export class TriangleModel implements IModel {
 
     color: string;
 
-    constructor(private x: number, private y: number, private dx: any, private dy: any, private sideLength: number, private lineWidth = Setup.CONFIG.LINE_WIDTH) {
-        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.COLORS)
+    constructor(private x: number, private y: number, private dx: any, private dy: any, private sideLength: number, private lineWidth = Setup.CONFIG.lineWidth) {
+        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
     draw(ctx: any) {

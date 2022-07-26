@@ -10,19 +10,12 @@ export class Animator {
 
         Context.ctx.canvas.width  = Context.canvasWidth;
         Context.ctx.canvas.height = Context.canvasHeight
-        // if (Setup.CONFIG.IS_FULL_SCREEN){
-        //     Context.ctx.canvas.width  = window.innerWidth;
-        //     Context.ctx.canvas.height = window.innerHeight;
-        // }else {
-        //
-        // }
 
         Context.ctx.clearRect(0, 0, Context.canvasWidth, Context.canvasHeight);
 
         for (var i = 0; i < EntityRepository.allModels.length; i++) {
             EntityRepository.allModels[i].update(Context.ctx);
         }
-
 
     }
 

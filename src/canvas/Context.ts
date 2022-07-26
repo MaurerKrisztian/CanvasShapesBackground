@@ -13,7 +13,7 @@ export class Context {
         const canvasElement: any = document.getElementById(elementId);
 
 
-        if (Setup.CONFIG.IS_FULL_SCREEN) {
+        if (Setup.CONFIG.isFullScreen) {
             canvasElement.width = window.innerWidth;
             canvasElement.height = window.innerHeight;
             this.canvasWidth = innerWidth
@@ -42,8 +42,8 @@ export class Context {
             throw new Error("Cannot get context");
         }
 
-        if (Setup.CONFIG.BACKGROUND_COLOR != 'none') {
-            canvasElement.style = `background: ${Setup.CONFIG.BACKGROUND_COLOR};`
+        if (Setup.CONFIG.backgroundColor != 'none') {
+            canvasElement.style = `background: ${Setup.CONFIG.backgroundColor};`
         }
 
         this.ctx = ctx;

@@ -10,7 +10,7 @@ function createShapeCanvas(htmlCanvasId: string = "myCanvas", config: Partial<IC
     clearPrevious()
 
     Context.getContext(htmlCanvasId)
-    for (let i = 0; i < config.MODEL_NUMBERS; i++) {
+    for (let i = 0; i < config.modelNumbers; i++) {
         EntityRepository.allModels.push(ModelFactory.create("random"));
     }
 

@@ -3,28 +3,28 @@ export const DEFAULT_LINE_WIDTH = 2
 export class Setup {
 
     static CONFIG: IConfig = {
-        MODEL_NUMBERS: 11,
-        COLORS: ['blue', 'red', 'green', 'yellow'],
-        BACKGROUND_COLOR: 'none',
-        ENABLED_MODELS: ['Triangle', 'Circle', 'Rect'],
-        MIN_SPEED: 11,
-        MAX_SPEED: 11,
-        LINE_WIDTH: 3,
-        SIZE_MULTIPLAYER: 2,
-        START_POSITION: 'random',
-        IS_FULL_SCREEN: true,
+        modelNumbers: 11,
+        colors: ['blue', 'red', 'green', 'yellow'],
+        backgroundColor: 'none',
+        enabledModels: ['Triangle', 'Circle', 'Rect'],
+        minSpeed: 4,
+        maxSpeed: 11,
+        lineWidth: 3,
+        sizeMultiplier: 2,
+        startPosition: 'random',
+        isFullScreen: true,
     }
 }
 
 export interface IConfig {
-    START_POSITION: 'middle' | 'random'
-    ENABLED_MODELS: ('Triangle' | 'Circle' | 'Rect')[],
-    COLORS: string[]
-    BACKGROUND_COLOR: 'none' | string,
-    MIN_SPEED: number,
-    MAX_SPEED: number,
-    LINE_WIDTH: number,
-    MODEL_NUMBERS: number,
-    SIZE_MULTIPLAYER: number,
-    IS_FULL_SCREEN: boolean,
+    startPosition: 'middle' | 'random'
+    enabledModels: ('Triangle' | 'Circle' | 'Rect')[],
+    colors: string[]
+    backgroundColor: 'none' | string,
+    minSpeed: number,
+    maxSpeed: number,
+    lineWidth: number,
+    modelNumbers: number,
+    sizeMultiplier: number,
+    isFullScreen: boolean,
 }

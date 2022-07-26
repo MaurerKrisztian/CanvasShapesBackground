@@ -9,8 +9,8 @@ export class CircleModel implements IModel {
 
     color: string;
 
-    constructor(private x: any, private y: any, private dx: number, private dy: number, private radius: number, private lineWidth: number = Setup.CONFIG.LINE_WIDTH) {
-        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.COLORS)
+    constructor(private x: any, private y: any, private dx: number, private dy: number, private radius: number, private lineWidth: number = Setup.CONFIG.lineWidth) {
+        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
     draw(context: any) {

@@ -8,8 +8,8 @@ export class RectModel implements IModel {
 
     color: string;
 
-    constructor(private x: any, private y: any, private dx: any, private dy: any, private width: number, private height: number, private lineWidth = Setup.CONFIG.LINE_WIDTH) {
-        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.COLORS)
+    constructor(private x: any, private y: any, private dx: any, private dy: any, private width: number, private height: number, private lineWidth = Setup.CONFIG.lineWidth) {
+        this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
     draw(context: any) {

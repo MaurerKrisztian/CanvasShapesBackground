@@ -19,8 +19,8 @@ export class ModelFactory {
     }
 
     private static createRandomModel() {
-        const speed = Utils.generateRandom(Setup.CONFIG.MIN_SPEED, Setup.CONFIG.MAX_SPEED)
-        const randoModelName = Utils.pickRandomFromArray(Setup.CONFIG.ENABLED_MODELS)
+        const speed = Utils.generateRandom(Setup.CONFIG.minSpeed, Setup.CONFIG.maxSpeed)
+        const randoModelName = Utils.pickRandomFromArray(Setup.CONFIG.enabledModels)
         switch (randoModelName) {
             case CircleModel.MODEL_NAME:
                 return this.createRandomCircle(speed)
@@ -38,8 +38,8 @@ export class ModelFactory {
 
 
     private static createRandomCircle(maxSpeed: number) {
-        const radius = Utils.generateRandom(10, 30) * Setup.CONFIG.SIZE_MULTIPLAYER
-        const circleStart = Setup.CONFIG.START_POSITION == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, radius): Utils.middlePosition()
+        const radius = Utils.generateRandom(10, 30) * Setup.CONFIG.sizeMultiplier
+        const circleStart = Setup.CONFIG.startPosition == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, radius): Utils.middlePosition()
 
         const dx = (Math.random() - 0.5) * maxSpeed;
         const dy = (Math.random() - 0.5) * maxSpeed;
@@ -53,21 +53,21 @@ export class ModelFactory {
         const dx = (Math.random() - 0.5) * maxSpeed;
         const dy = (Math.random() - 0.5) * maxSpeed;
 
-        const rectRadius: number = sideLength * Setup.CONFIG.SIZE_MULTIPLAYER;
-        const rectStart = Setup.CONFIG.START_POSITION == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, rectRadius): Utils.middlePosition()
-        return new TriangleModel(rectStart.x, rectStart.y, dx, dy, sideLength,  Setup.CONFIG.LINE_WIDTH);
+        const rectRadius: number = sideLength * Setup.CONFIG.sizeMultiplier;
+        const rectStart = Setup.CONFIG.startPosition == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, rectRadius): Utils.middlePosition()
+        return new TriangleModel(rectStart.x, rectStart.y, dx, dy, sideLength,  Setup.CONFIG.lineWidth);
     }
 
     private static createRandomRect(maxSpeed: number) {
-        const width = Utils.generateRandom(11, 100) * Setup.CONFIG.SIZE_MULTIPLAYER;
-        const height = Utils.generateRandom(11, 100) * Setup.CONFIG.SIZE_MULTIPLAYER;
+        const width = Utils.generateRandom(11, 100) * Setup.CONFIG.sizeMultiplier;
+        const height = Utils.generateRandom(11, 100) * Setup.CONFIG.sizeMultiplier;
 
         const dx = (Math.random() - 0.5) * maxSpeed;
         const dy = (Math.random() - 0.5) * maxSpeed;
 
         const rectRadius: number = height < width ? width : height;
-        const rectStart = Setup.CONFIG.START_POSITION == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, rectRadius * 2) : Utils.middlePosition()
-        return new RectModel(rectStart.x, rectStart.y, dx, dy, width  * Setup.CONFIG.SIZE_MULTIPLAYER, height);
+        const rectStart = Setup.CONFIG.startPosition == 'random' ? this.generateStartPositionRadiusBased(Math.random() * Context.canvasWidth, Math.random() * Context.canvasHeight, rectRadius * 2) : Utils.middlePosition()
+        return new RectModel(rectStart.x, rectStart.y, dx, dy, width  * Setup.CONFIG.sizeMultiplier, height);
     }
 
     static generateStartPositionRadiusBased(x: number, y: number, radius: number) {
