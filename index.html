@@ -81,15 +81,15 @@
         <p> IS_FULL_SCREEN: <input class="messageCheckbox" type="checkbox" id="IS_FULL_SCREEN" checked></p>
 
         <button id="generate">Generate</button>
-        <div id="code">
-            &lt;script&gt; createShapeCanvas("myCanvas",<span id="conf"></span>) &lt;/script&gt;
-        </div>
+        <button onclick="copySettings()">Copy settings</button>
 
     </div>
 </div>
 
 <canvas id="myCanvas" width="400px" height="500px"></canvas>
 <script>
+    let config = {}
+
     let hideBtnValue = false;
     document.getElementById('hideBtn').addEventListener('click', () => {
         hideBtnValue = !hideBtnValue;
@@ -101,11 +101,13 @@
 
     })
 
+    function copySettings(){
+        navigator.clipboard.writeText(JSON.stringify(config,  null, 2))
+    }
     const generateBtn = document.getElementById("generate")
     const numberOfModelsInput = document.getElementById("numberOfModels")
     var startPositionSelect = document.getElementById("startPos");
     var codeDiv = document.getElementById("example-code");
-    var confElement = document.getElementById("conf");
 
     const enabledModelCheckbox = {
         Triangle: document.getElementById('Triangle'),
@@ -114,7 +116,7 @@
     }
 
     generateBtn.onclick = () => {
-        const config = {
+         config = {
             modelNumbers: Number.parseInt(numberOfModelsInput.value),
             startPosition: startPositionSelect.options[startPositionSelect.selectedIndex].text,
             enabledModels: getEnabledModels(),
@@ -129,8 +131,6 @@
 
         console.log(config)
         createShapeCanvas("myCanvas", config)
-        confElement.innerText = JSON.stringify(config, null, 2)
-
     }
 
     function getEnabledModels() {
