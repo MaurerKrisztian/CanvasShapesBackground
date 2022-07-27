@@ -1,7 +1,7 @@
 import {Setup} from "../setup";
 
 export class Context {
-    static ctx: any;
+    static ctx: CanvasRenderingContext2D;
 
     static canvasWidth: number;
     static canvasHeight: number;
@@ -9,8 +9,8 @@ export class Context {
     constructor() {
     }
 
-    static getContext(elementId: string = "myCanvas"): HTMLCanvasElement {
-        const canvasElement: any = document.getElementById(elementId);
+    static getContext(elementId: string = "myCanvas"): CanvasRenderingContext2D {
+        const canvasElement: HTMLCanvasElement = document.getElementById(elementId) as HTMLCanvasElement;
 
 
         if (Setup.CONFIG.isFullScreen) {
@@ -43,7 +43,7 @@ export class Context {
         }
 
         if (Setup.CONFIG.backgroundColor != 'none') {
-            canvasElement.style = `background: ${Setup.CONFIG.backgroundColor};`
+            (canvasElement as any).style = `background: ${Setup.CONFIG.backgroundColor};`
         }
 
         this.ctx = ctx;

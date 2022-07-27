@@ -9,11 +9,11 @@ export class CircleModel implements IModel {
 
     color: string;
 
-    constructor(private x: any, private y: any, private dx: number, private dy: number, private radius: number, private lineWidth: number = Setup.CONFIG.lineWidth) {
+    constructor(private x: number, private y: number, private dx: number, private dy: number, private radius: number, private lineWidth: number = Setup.CONFIG.lineWidth) {
         this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
-    draw(context: any) {
+    draw(context: CanvasRenderingContext2D) {
         context.lineWidth = this.lineWidth;
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
@@ -23,7 +23,7 @@ export class CircleModel implements IModel {
     }
 
 
-    update(context: any) {
+    update(context: CanvasRenderingContext2D) {
         if (this.x > Context.canvasWidth - this.radius || this.x < 0 + this.radius) {
             this.dx = -this.dx;
         }
@@ -35,6 +35,5 @@ export class CircleModel implements IModel {
         this.y = this.y + this.dy;
 
         this.draw(context);
-
     }
 }

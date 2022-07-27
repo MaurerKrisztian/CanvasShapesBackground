@@ -9,11 +9,11 @@ export class TriangleModel implements IModel {
 
     color: string;
 
-    constructor(private x: number, private y: number, private dx: any, private dy: any, private sideLength: number, private lineWidth = Setup.CONFIG.lineWidth) {
+    constructor(private x: number, private y: number, private dx: number, private dy: number, private sideLength: number, private lineWidth = Setup.CONFIG.lineWidth) {
         this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
-    draw(ctx: any) {
+    draw(ctx: CanvasRenderingContext2D) {
         ctx.lineWidth = this.lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
@@ -25,7 +25,7 @@ export class TriangleModel implements IModel {
     }
 
 
-    update(context: any) {
+    update(context: CanvasRenderingContext2D) {
         if (this.x > Context.canvasWidth - this.sideLength * 2 || this.x < 0) {
             this.dx = -this.dx;
         }

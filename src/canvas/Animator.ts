@@ -3,7 +3,7 @@ import { Context } from "./Context";
 import {Setup} from "../setup";
 
 export class Animator {
-    static requestFrameId: any
+    static requestFrameId: number
 
     static animate() {
         Animator.requestFrameId = requestAnimationFrame(Animator.animate); //infinite loop

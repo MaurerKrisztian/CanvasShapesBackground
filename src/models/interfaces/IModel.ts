@@ -1,4 +1,4 @@
 export interface IModel {
-    draw(ctx: any): any
-    update(ctx: any): any;
+    draw(ctx: CanvasRenderingContext2D): any;
+    update(ctx: CanvasRenderingContext2D): any;
 }

@@ -26,7 +26,8 @@
         maxSpeed: 11,
         lineWidth: 3,
         sizeMultiplier: 2,
-        startPosition: 'random'
+        startPosition: 'random', //  'middle' | 'random',
+        isFullScreen: true,
     })
 </script>
 </body>

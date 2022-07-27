@@ -8,11 +8,11 @@ export class RectModel implements IModel {
 
     color: string;
 
-    constructor(private x: any, private y: any, private dx: any, private dy: any, private width: number, private height: number, private lineWidth = Setup.CONFIG.lineWidth) {
+    constructor(private x: number, private y: number, private dx: number, private dy: number, private width: number, private height: number, private lineWidth = Setup.CONFIG.lineWidth) {
         this.color = Utils.pickRandomFromArray<string>(Setup.CONFIG.colors)
     }
 
-    draw(context: any) {
+    draw(context: CanvasRenderingContext2D) {
         context.beginPath();
         context.lineWidth = this.lineWidth;
         context.rect(this.x, this.y, this.width, this.height);
@@ -22,7 +22,7 @@ export class RectModel implements IModel {
     }
 
 
-    update(context: any) {
+    update(context: CanvasRenderingContext2D) {
         if (this.x > Context.canvasWidth - this.width || this.x < 0) {
             this.dx = -this.dx;
         }
