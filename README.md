@@ -33,3 +33,5 @@
 </body>
 </html>
 ```
+
+blog post: https://dev.to/maurerkrisztian/bouncing-shapes-background-with-canvas-30pf
